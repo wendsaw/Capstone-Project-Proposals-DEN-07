@@ -18,7 +18,7 @@ export default function Login() {
     login(email, password);
   };
 
-  // 🔐 Redirect user to home page if already logged in
+  //  Redirect user to home page if already logged in
   useEffect(() => {
     if (user) {
       navigate('/', { replace: true });

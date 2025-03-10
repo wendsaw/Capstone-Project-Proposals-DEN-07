@@ -1,9 +1,11 @@
 
 
 
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import style from './Signup.module.css'
 import { useSignup } from '../../hooks/useSignup'
+import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 
 
@@ -13,12 +15,19 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
   const { error, isPending, signup } = useSignup()
-
+  const navigate=useNavigate()
+const { user } = useAuthContext();
 
   const handleSubmit = (e) => {
     e.preventDefault()
     signup(email, password, displayName);
   }
+  // Redirect user to home page if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate('/', { replace: true });
+    }
+  }, [user, navigate]);
 
   return (
     <div>
