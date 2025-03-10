@@ -6,15 +6,14 @@ import 'firebase/auth'
 
 
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBrKiwktY7UW_3XYDSi_L3aNfENbx0GVj0",
-    authDomain: "mymoney-f9d76.firebaseapp.com",
-    projectId: "mymoney-f9d76",
-    storageBucket: "mymoney-f9d76.firebasestorage.app",
-    messagingSenderId: "397955939276",
-    appId: "1:397955939276:web:a3a3790581743292103b69"
-  };
-
+const firebaseConfig =  {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
   //init firebase
 
 firebase.initializeApp(firebaseConfig)
