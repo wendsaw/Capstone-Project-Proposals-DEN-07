@@ -33,7 +33,7 @@ const RootLayout = () => {
 
               <>
               
-              <li style={{marginRight:"100px"}}><NavLink to='/' className="links">Profile</NavLink></li>
+              <li style={{marginRight:"100px"}}><NavLink to='profile' className="links">Profile</NavLink></li>
               <li style={{marginRight:"50px"}}><NavLink to='about' className="links">About</NavLink></li>
               <li style={{marginRight:"50px"}}><NavLink to='help' className="links">Help</NavLink></li>
                 <li>hello {user.displayName}... good luck!</li>
