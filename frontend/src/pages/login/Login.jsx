@@ -21,7 +21,7 @@ export default function Login() {
   //  Redirect user to home page if already logged in
   useEffect(() => {
     if (user) {
-      navigate('/', { replace: true });
+      navigate('/profile', { replace: true });
     }
   }, [user, navigate]);
 

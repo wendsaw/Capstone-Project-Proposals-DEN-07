@@ -22,7 +22,7 @@ const RootLayout = () => {
 
             {!user && (
               <>
-                
+                 <li style={{marginRight:"100px"}}><NavLink to='/' className="links">Home</NavLink></li>
                 <li><NavLink to='login' className="links">Login</NavLink></li>
                 <li><NavLink to='signup' className="links">Signup</NavLink></li>
               </>
@@ -33,7 +33,7 @@ const RootLayout = () => {
 
               <>
               
-              <li style={{marginRight:"100px"}}><NavLink to='/' className="links">Home</NavLink></li>
+              <li style={{marginRight:"100px"}}><NavLink to='/' className="links">Profile</NavLink></li>
               <li style={{marginRight:"50px"}}><NavLink to='about' className="links">About</NavLink></li>
               <li style={{marginRight:"50px"}}><NavLink to='help' className="links">Help</NavLink></li>
                 <li>hello {user.displayName}... good luck!</li>
