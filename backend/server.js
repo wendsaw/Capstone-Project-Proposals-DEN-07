@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
+import JobApplication from './models/application.js';
 import Listing from './models/listing.js';
 
 dotenv.config(); 
@@ -46,7 +46,7 @@ app.get('/listings/:id', async (req, res) => {
         const listing = await Listing.findById(req.params.id)
         res.status(200).json(listing)
     } catch(err) {
-        console.log(err)
+        
         res.status(400).json(err)
     }
 })
@@ -57,7 +57,7 @@ app.post('/listing', async (req, res) => {
         console.log(listing)
         res.status(201).json(listing)
     } catch(err) {
-        console.log(err)
+        
         res.status(400).json(err)
     }
 })
@@ -65,7 +65,7 @@ app.post('/listing', async (req, res) => {
 app.delete('/listings/:id', async (req, res) => {
     try {
         const response = await Listing.findByIdAndDelete(req.params.id)
-        console.log(response)
+        
         res.status(200).json(response)
     } catch(err) {
         console.log(err)
@@ -75,10 +75,10 @@ app.delete('/listings/:id', async (req, res) => {
 
 app.put('/listing/:id', async (req, res) => {
     try {
-        console.log('PUT /listing/:id')
+       
         console.log(req.body)
         const response = await Listing.findByIdAndUpdate(req.params.id, req.body) // can add { new: true } as third argument
-        // console.log(response)
+        
         res.status(200).json(response)
     } catch(err) {
         console.log(err)
@@ -86,3 +86,14 @@ app.put('/listing/:id', async (req, res) => {
     }
 })
 
+
+app.post('/apply', async (req, res) => {
+    try {
+        const resp= await JobApplication.create(req.body)
+        console.log(resp)
+        res.status(201).json(resp)
+    } catch(err) {
+        
+        res.status(400).json(err)
+    }
+})
