@@ -7,13 +7,13 @@ import { useAuthContext } from './hooks/useAuthContext';
 
 import Home from './pages/home/Home'
 import About from './pages/About';
-import Faq from './pages/Faq';
-import Contact from './pages/Contact';
+import Faq from './pages/help/Faq';
+import Contact from './pages/help/Contact';
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 
 //layouts
-import RootLayout from './layouts/RoutLayout';
+import RootLayout from './layouts/RootLayout';
 import HelpLayout from './layouts/HelpLayout';
 
 
