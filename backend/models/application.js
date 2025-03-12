@@ -1,6 +1,6 @@
 
 
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
@@ -33,17 +33,16 @@ const jobApplicationSchema = new Schema({
   },
   resumeUrl: {
     type: String,
-    required: [true, "Resume URL is required"],
-   
+    required: [true, "Resume URL is required"]
   },
   jobId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Listing", // reference to the job listing
+    ref: "Listing",
     required: [true, "Job ID reference is required"]
   }
-  
 }, { timestamps: true });
 
 const JobApplication = mongoose.model("JobApplication", jobApplicationSchema);
 
-export default JobApplication;
+module.exports = JobApplication;
+

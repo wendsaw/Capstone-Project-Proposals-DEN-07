@@ -1,10 +1,16 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import JobApplication from './models/application.js';
-import Listing from './models/listing.js';
 
+const express =require('express')
+const mongoose= require ('mongoose');
+const authRoutes=require('./routes/authRoutes')
+const listingsRoutes=require('./routes/listingsRoutes')
+const dotenv = require('dotenv');
 dotenv.config(); 
+
+const app = express();
+
+//middlewares
+
+app.use(express.json())
 
 
 mongoose.connect(process.env.MONGO_URL) 
@@ -20,80 +26,23 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 const port = 3000;
-const app = express();
+
 
 app.use(express.json())
 // app.use(cors())
 
-app.get('/', async (req, res) => {
-    
-        res.send('hello')
-   
-})
+//routes
+app.use(authRoutes)
+app.use(listingsRoutes)
 
-app.get('/listings', async (req, res) => {
-    try {
-        const listings = await Listing.find({})
-        res.status(200).json(listings)
-    } catch(err) {
-        console.log(err)
-        res.status(400).json(err)
-    }
-})
 
-app.get('/listings/:id', async (req, res) => {
-    try {
-        const listing = await Listing.findById(req.params.id)
-        res.status(200).json(listing)
-    } catch(err) {
+// app.post('/apply', async (req, res) => {
+//     try {
+//         const resp= await JobApplication.create(req.body)
+//         console.log(resp)
+//         res.status(201).json(resp)
+//     } catch(err) {
         
-        res.status(400).json(err)
-    }
-})
-
-app.post('/listing', async (req, res) => {
-    try {
-        const listing= await Listing.create(req.body)
-        console.log(listing)
-        res.status(201).json(listing)
-    } catch(err) {
-        
-        res.status(400).json(err)
-    }
-})
-
-app.delete('/listings/:id', async (req, res) => {
-    try {
-        const response = await Listing.findByIdAndDelete(req.params.id)
-        
-        res.status(200).json(response)
-    } catch(err) {
-        console.log(err)
-        res.status(400).json(err)
-    }
-}) 
-
-app.put('/listing/:id', async (req, res) => {
-    try {
-       
-        console.log(req.body)
-        const response = await Listing.findByIdAndUpdate(req.params.id, req.body) // can add { new: true } as third argument
-        
-        res.status(200).json(response)
-    } catch(err) {
-        console.log(err)
-        res.status(400).json(err)
-    }
-})
-
-
-app.post('/apply', async (req, res) => {
-    try {
-        const resp= await JobApplication.create(req.body)
-        console.log(resp)
-        res.status(201).json(resp)
-    } catch(err) {
-        
-        res.status(400).json(err)
-    }
-})
+//         res.status(400).json(err)
+//     }
+// })

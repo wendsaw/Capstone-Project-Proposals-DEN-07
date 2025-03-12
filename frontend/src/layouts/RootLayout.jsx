@@ -48,9 +48,14 @@ const RootLayout = () => {
           </ul>
         </nav>
       </header>
-      <main>
-        <Outlet />
-      </main>
+      <main className={style.main}>
+  <Outlet />
+</main>
+      <footer>
+    Copyright &copy; Ant technology
+  
+      </footer>
+      
 
 
 
