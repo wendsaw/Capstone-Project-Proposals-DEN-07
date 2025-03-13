@@ -1,69 +1,41 @@
+import { useState } from 'react'
+import { useAuthContext } from './useAuthContext'
+import { useNavigate } from 'react-router-dom'
 
+export const useLogin = ( email, password) => {
+  const [error, setError] = useState(null)
+  const [isPending, setIsPending] = useState(null)
+  const { dispatch } = useAuthContext()
+  const navigate=useNavigate()
 
-import { useNavigate } from 'react-router-dom';
-import { useState,useEffect } from "react";
-import { projectAut } from "../firebase/Confi";
-import { useAuthContext } from "./useAuthContext";
+  const login = async (email, password) => {
+    setIsPending(true)
+    setError(null)
 
+    const response = await fetch("http://localhost:3000/login", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email, password })
+    })
+    const json = await response.json()
 
-
-
-export const  useLogin =()=>{
-
-    const navigate=useNavigate()
-
-    const [isCancelled, setIsCancelled]=useState(false)
-
-    const [error, setError]=useState(null)
-    const [isPending, setIsPending]=useState(false)
-    const {dispatch}=useAuthContext()
-
-    const login= async (email,password)=>{
-        setError(null)
-        setIsPending(true)
-
-       
-
-        try {
-
-
-           const res= await projectAut.signInWithEmailAndPassword(email,password)
-
-            // dispatch logout action
-
-            dispatch({type:'LOGIN', payload:res.user})
-
-            //update state
-
-            if (!isCancelled){
-                setError(null)
-                setIsPending(false)
-                
-
-            }
-           
-            
-
-            
-        } catch (error) {
-            if (!isCancelled){
-                
-                console.log(error.message);
-                setError(error.message)
-                setIsPending(false)
-
-            }
-
-           
-            
-        }
+    if (!response.ok) {
+      setIsPending(false)
+      setError(json.error)
     }
+    if (response.ok) {
+      // save the user to local storage
+      localStorage.setItem('user', JSON.stringify(json))
 
-    useEffect(() => {
-        
-        return () => setIsCancelled(true)
-    }, []);
+      // update the auth context
+      dispatch({type: 'LOGIN', payload: json})
+      navigate('/profile')
 
-return { login, error, isPending}
+      // update loading state
+      setIsPending(false)
+      Navigate('/profile')
+    }
+  }
 
+  return { login, isPending, error }
 }

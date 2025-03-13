@@ -1,70 +1,42 @@
+import { useState } from 'react'
+import { useAuthContext } from './useAuthContext'
+import { useNavigate } from 'react-router-dom'
 
-import { useState, useEffect } from "react";
-import { projectAut } from "../firebase/Confi";
+export const useSignup = ( email, password) => {
+  const [error, setError] = useState(null)
+  const [isPending, setIsPending] = useState(null)
+  const { dispatch } = useAuthContext()
+  const navigate=useNavigate()
 
-import { useAuthContext } from "./useAuthContext";
+  const signup = async (email, password) => {
+    setIsPending(true)
+    setError(null)
 
+    const response = await fetch("http://localhost:3000/signup", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email, password })
+    })
+    const json = await response.json()
 
-
-
-
-export const useSignup = () => {
-    const [isCancelled, setIsCancelled]=useState(false)
-
-    const [error, setError]=useState(null)
-    const [isPending, setIsPending]=useState(false)
-
-    const {dispatch}=useAuthContext()
-
-    const signup= async ( email,password,displayName)=>{
-
-        setError(null)
-        setIsPending(true)
-
-        try {
-            //signup
-
-           const res= await projectAut.createUserWithEmailAndPassword(email,password)
-           
-
-           if (!res){
-            throw new Error("could not create user");
-            
-           }
-           
-            //add display name to user
-
-            await res.user.updateProfile({displayName:displayName})
-
-            //dispatch login action
-
-            dispatch ({type:"LOGIN", payload:res.user})
-
-            if (!isCancelled){
-                setError(null)
-                setIsPending(false)
-                
-
-            }
-        } catch (error) {
-
-            if (!isCancelled){
-                
-                console.log(error.message);
-                setError(error.message)
-                setIsPending(false)
-
-            }
-        }
-
-
+    if (!response.ok) {
+      setIsPending(false)
+      setError(json.error)
     }
-    useEffect(() => {
-        
-        return () => setIsCancelled(true)  
-    
-    }, []);
+    if (response.ok) {
+      // save the user to local storage
+      localStorage.setItem('user', JSON.stringify(json))
 
-   return {error,isPending,signup}
+      // update the auth context
+      dispatch({type: 'LOGIN', payload: json})
+      navigate('/profile')
+
+      // update loading state
+      setIsPending(false)
+    }
+  }
+
+  return { signup, isPending, error }
 }
- 
+
+

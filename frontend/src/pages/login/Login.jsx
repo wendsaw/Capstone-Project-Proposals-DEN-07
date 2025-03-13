@@ -1,80 +1,24 @@
 import { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-
+ import { useLogin } from '../../hooks/useLogin';
 
 //styles
 import style from './Login.module.css';
 
 export default function Login() {
 
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const [emailError, setEmailError] = useState(null)
-  const [passwordError, setPasswordError] = useState(null)
-  const [isPending, setIsPending] = useState(false)
-  const navigate = useNavigate()
-
-  const signIn = async (e) => {
-    setIsPending(true)
-    setEmailError(null);
-    setPasswordError(null);
-
-    try {
-      const response = await fetch('http://localhost:3000/login', {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email, password }),
-        credentials: "include"
-
-        
-      });
+const [email,setEmail]=useState('')
+const [password, setPassword]=useState('')
   
-      const data = await response.json();
-      console.log(data);
-      console.log(response);
-    console.log(data.errors);
-    
+  const {login,error,isPending}=useLogin()
 
-      if (!response.ok) {
-       
-        if (data.errors) {
-          console.log(data.errors);
-          
-          setEmailError(data.errors.email)
-          setPasswordError(data.errors.password)
-          setIsPending(false);
-
-          console.log(data.errors);
-          
-          
-        } 
-      }
-  
-      if (data.user){
-        setIsPending(false);
-
-        navigate('/')
-      }
-      
-  
-    } catch (error) {
-      console.log(error);
-      setIsPending(false)
-     
-    }
-  }
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    signIn(email,password)
-   
+    await login(email,password)
     
-    setIsPending(false)
    
   }
 
@@ -85,7 +29,7 @@ export default function Login() {
 
         <label>
           <span>Email:</span>
-          {emailError && <div style={{color:"red"}}>{emailError}</div>}
+          
           <input
             type="text"
             onChange={(e) => { setEmail(e.target.value) }}
@@ -95,7 +39,7 @@ export default function Login() {
         </label>
         <label >
           <span>Password</span>
-          {passwordError && <div style={{color:"red"}}>{passwordError}</div>}
+          
           <input
             type="password"
             onChange={(e) => { setPassword(e.target.value) }}
@@ -104,7 +48,8 @@ export default function Login() {
           />
         </label>
 
-        <button className='btn' >signIn</button >
+        <button className='btn' disabled={isPending} >signIn</button >
+        {error && <div style={{color:"red"}}>{error}</div>}
      
       
 
