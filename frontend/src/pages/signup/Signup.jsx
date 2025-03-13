@@ -2,54 +2,101 @@
 
 
 import { useState,useEffect } from 'react'
-import style from './Signup.module.css'
-import { useSignup } from '../../hooks/useSignup'
-import { useNavigate } from 'react-router-dom'
-import { useAuthContext } from '../../hooks/useAuthContext';
 
+import { useNavigate } from 'react-router-dom'
+
+import style from './Signup.module.css'
 
 
 export default function Signup() {
 
+ const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [displayName, setDisplayName] = useState('')
-  const { error, isPending, signup } = useSignup()
-  const navigate=useNavigate()
-const { user } = useAuthContext();
+  const [userName, setUserName] = useState('')
+  const [emailError, setEmailError]=useState(null)
+  const [passwordError, setPasswordError]=useState(null)
+const [isPending, setIsPending]=useState(false)
+
+console.log('hello');
+
+const navigate=useNavigate()
+ 
+  const signUp = async (e) => {
+    setIsPending(true)
+    setEmailError(null);
+    setPasswordError(null);
+    try {
+      const response = await fetch('http://localhost:3000/signup', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, userName, email, password }),
+        credentials: "include"
+
+        
+      });
+  
+      const data = await response.json();
+      
+
+      if (!response.ok) {
+       
+        if (data.errors) {
+          setEmailError(data.errors.email)
+          setPasswordError(data.errors.password)
+          setIsPending(false);
+
+          console.log(data.errors);
+          
+          
+        } 
+      }
+  
+      if (data.user){
+        setIsPending(false);
+
+        navigate('/')
+      }
+      
+  
+    } catch (error) {
+      console.log(error);
+      setIsPending(false)
+     
+    }
+  }
+  
 
   const handleSubmit = (e) => {
+    console.log('hello');
+    
     e.preventDefault()
-    signup(email, password, displayName);
+    signUp()
+    
   }
-  // Redirect user to home page if already logged in
-  useEffect(() => {
-    if (user) {
-      navigate('/', { replace: true });
-    }
-  }, [user, navigate]);
 
+  
+  
   return (
     <div>
       <form onSubmit={handleSubmit} className={style['signup-form']}>
         <h2>Sign Up</h2>
-
-
         <label>
-          <span>Email:</span>
+          <span>First Name:</span>
           <input
-            type="email"
-            onChange={(e) => { setEmail(e.target.value) }}
-            value={email}
+            type="text"
+            onChange={(e) => { setFirstName(e.target.value) }}
+            value={firstName}
 
           />
         </label>
-        <label >
-          <span>Password</span>
+        <label>
+          <span>Last Name:</span>
           <input
-            type="password"
-            onChange={(e) => { setPassword(e.target.value) }}
-            value={password}
+            type="text"
+            onChange={(e) => { setLastName(e.target.value) }}
+            value={lastName}
 
           />
         </label>
@@ -57,14 +104,36 @@ const { user } = useAuthContext();
           <span>User Name:</span>
           <input
             type="text"
-            onChange={(e) => { setDisplayName(e.target.value) }}
-            value={displayName}
+            onChange={(e) => { setUserName(e.target.value) }}
+            value={userName}
 
           />
         </label>
-       {!isPending && <button className='btn'>Signup</button>}
-       {isPending && <button className='btn' disabled> loading....</button>}
-       {error && <p>{error}</p>}
+
+        <label>
+          <span>Email:</span>
+          {emailError && <div style={{color:"red"}}>{emailError}</div>}
+          <input
+            type="text"
+            onChange={(e) => { setEmail(e.target.value) }}
+            value={email}
+
+          />
+        </label>
+        <label >
+          <span>Password</span>
+          {passwordError && <div style={{color:"red"}}>{passwordError}</div>}
+          <input
+            type="password"
+            onChange={(e) => { setPassword(e.target.value) }}
+            value={password}
+
+          />
+        </label>
+       
+     <button className='btn' disabled={isPending}>Signup</button >
+     
+       {isPending && <div> signing....up </div>}
 
       </form>
     </div>

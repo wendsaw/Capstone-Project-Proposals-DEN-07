@@ -1,48 +1,35 @@
-
-const express =require('express')
-const mongoose= require ('mongoose');
-const authRoutes=require('./routes/authRoutes')
-const listingsRoutes=require('./routes/listingsRoutes')
+const express = require('express');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-dotenv.config(); 
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
+const authRoutes = require('./routes/authRoutes');
+const listingsRoutes = require('./routes/listingsRoutes');
+
+dotenv.config();
 
 const app = express();
+const port = 3000;
 
-//middlewares
+// Middleware
+app.use(cors({
+  origin: 'http://localhost:5173', // Change to your frontend domain in production
+  credentials: true
+}));
+app.use(express.json());
+app.use(cookieParser());
 
-app.use(express.json())
+// Routes
+app.use(authRoutes);
+app.use(listingsRoutes);
 
-
-mongoose.connect(process.env.MONGO_URL) 
+// DB Connection
+mongoose.connect(process.env.MONGO_URL)
   .then(() => {
     app.listen(port, () => {
-      console.log("Listening on port 3000");
+      console.log(`Listening on port ${port}`);
       console.log('Database connected');
     });
   })
-  .catch((err) => {
-    console.log(err);
-  });
-
-
-const port = 3000;
-
-
-app.use(express.json())
-// app.use(cors())
-
-//routes
-app.use(authRoutes)
-app.use(listingsRoutes)
-
-
-// app.post('/apply', async (req, res) => {
-//     try {
-//         const resp= await JobApplication.create(req.body)
-//         console.log(resp)
-//         res.status(201).json(resp)
-//     } catch(err) {
-        
-//         res.status(400).json(err)
-//     }
-// })
+  .catch((err) => console.error(err));

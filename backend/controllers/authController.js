@@ -1,12 +1,31 @@
 const User=require('../models/User')
 
+const jwt=require('jsonwebtoken');
 //handle error
 
 const handleErrors=(err)=>{
 
-    console.log(err.message, err.code);
+    console.log(err.message);
 
     let errors={email:"" ,password:""};
+
+    //incorrect email 
+
+    if(err.message ==='incorrect email'){
+        errors.email="this email is wrong"
+        console.log(errors.email);
+        
+        
+        
+    }
+    //incorrect password
+
+    if(err.message ==='incorrect password'){
+        errors.password="this password is wrong"
+        console.log(errors.password);
+        
+        
+    }
 
     //duplicate email
 
@@ -27,8 +46,15 @@ const handleErrors=(err)=>{
        return errors
         
     }
+
+    return errors
     
 }
+
+const createToken = (id) => {
+    return jwt.sign({ id }, 'ant technology secret', { expiresIn: '3d' });
+  };
+  
 
 module.exports.signup_get=(req,res)=>{
 
@@ -45,11 +71,17 @@ module.exports.signup_post= async (req,res)=>{
 
     const {firstName,lastName,userName,email,password}=req.body
     
+    
 
     try {
 
       const user= await User.create({firstName,lastName,userName,email,password});
-      res.status(201).json(user)
+      const maxAge = 3 * 24 * 60 * 60 * 1000; 
+      const token = createToken(user._id);
+      
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
+         res.status(201).json({user:user._id});
+         
         
     } catch (err) {
         const errors=handleErrors(err)
@@ -60,9 +92,28 @@ module.exports.signup_post= async (req,res)=>{
 }
 
 
-module.exports.login_post=(req,res)=>{
+module.exports.login_post= async (req,res)=>{
     
-    const {firstName,lastName,userName,email,password}=req.body
+    const {email,password}= req.body
+
     
+    try {
+
+        const user= await User.login(email, password)
+        const token = createToken(user._id);
+        const maxAge = 3 * 24 * 60 * 60 * 1000; 
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
+        res.status(200).json({user})
+        
+    } catch (err) {
+
+       
+        
+        const errors=handleErrors(err)
+        console.log('Sending error response:', errors);
+    
+        res.status(400).json({errors})
+    }
+  
     
 }
