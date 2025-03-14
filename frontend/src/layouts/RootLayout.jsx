@@ -39,9 +39,10 @@ const RootLayout = () => {
 
                 <ul style={{ display: 'flex', alignItems: 'center' }}>
                   <li style={{ marginRight: 'auto' }}>{user.email}...good luck!</li>
+                  <button style={{marginLeft:"600px", marginBottom:"25px"}}onClick={logout}>Logout</button>
                   
                 </ul>
-                <button className="btn" onClick={logout}>Logout</button>
+                
               
           </>
 
