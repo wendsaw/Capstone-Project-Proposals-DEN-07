@@ -19,7 +19,7 @@ export default function SearchBar() {
         e.preventDefault()
 
         navigate(`search?q=${search}`)
-
+        console.log('the search term is ',search);
         
     }
 
@@ -32,7 +32,7 @@ export default function SearchBar() {
         <input 
         id='search'
         type="text"
-        onChange={(e)=>{setSearch(e,EventTarget.value)}}
+        onChange={(e) => setSearch(e.target.value)}
         required
          />
      </form>
