@@ -10,14 +10,22 @@ module.exports.homepage_get=(req,res)=>{
 
 module.exports.listing_getAll= async(req,res)=>{
 
+    const searchQuery = req.params.query;  
+  console.log("Search Query:", searchQuery);
+    
+    
+
     try {
-        const listings = await Listing.find({})
+        const listings = await Listing.find({ title: { $regex: req.params.query, $options: 'i' } });
         res.status(200).json(listings)
     } catch(err) {
         console.log(err)
         res.status(400).json(err)
     }
 }
+
+
+
 
 module.exports.listing_getById= async (req,res)=>{
 

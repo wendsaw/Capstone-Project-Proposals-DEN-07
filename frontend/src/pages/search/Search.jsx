@@ -13,7 +13,8 @@ const Search = () => {
     console.log(query);
     
 
-    const url='http://localhost:3000/listings?q=' + query
+    const url = `http://localhost:3000/listings/${query}`;
+
     const {error, isPending, data}=useFetch(url)
 
 
