@@ -12,10 +12,12 @@ import Contact from './pages/help/Contact';
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 import Profile from './pages/Profile';
+import Search from './pages/search/Search';
 
 //layouts
 import RootLayout from './layouts/RootLayout';
 import HelpLayout from './layouts/HelpLayout';
+
 
 
 // const {user} = useAuthContext()
@@ -33,6 +35,7 @@ const router = createBrowserRouter(
       <Route path='signup' element={<Signup />} />
       <Route path='about' element={<About />} />
       <Route path='profile' element={ <Profile />} />
+      <Route path='search' element={ <Search/>} />
       <Route Route path='help' element={<HelpLayout/>}> 
       <Route path='faq' element={<Faq/>}/>
       <Route path='contact' element={<Contact/>}/>

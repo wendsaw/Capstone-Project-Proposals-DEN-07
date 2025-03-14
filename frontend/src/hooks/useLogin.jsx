@@ -9,6 +9,7 @@ export const useLogin = ( email, password) => {
   const navigate=useNavigate()
 
   const login = async (email, password) => {
+    
     setIsPending(true)
     setError(null)
 
@@ -33,7 +34,7 @@ export const useLogin = ( email, password) => {
 
       // update loading state
       setIsPending(false)
-      Navigate('/profile')
+      navigate('/profile')
     }
   }
 

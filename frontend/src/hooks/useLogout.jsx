@@ -1,7 +1,7 @@
 
 
 import { useState,useEffect} from "react";
-import { projectAut } from "../firebase/Confi";
+
 import { useAuthContext } from "./useAuthContext";
 import { useNavigate } from "react-router-dom";
 
