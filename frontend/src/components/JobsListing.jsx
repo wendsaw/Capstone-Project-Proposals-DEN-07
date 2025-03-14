@@ -18,7 +18,7 @@ const JobsListing = ({data}) => {
         {data && data.map((job, index) => (
           <div className="careers" key={job._id}>
             {console.log(job._id, index)}
-            <NavLink to={`job/${job._id}`}>
+            <NavLink to={`jobDetails/${job._id}`}>
               <li className="jobs">Title:{job.title}</li>
               <p className="jobs">Description:{job.description}</p>
               <p className="jobs">salary:{job.salary}</p>

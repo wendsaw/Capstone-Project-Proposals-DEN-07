@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { createBrowserRouter, createRoutesFromElements, RouterProvider,useNavigate } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, useNavigate } from 'react-router-dom';
 import { Route } from "react-router-dom";
 import { useAuthContext } from './hooks/useAuthContext';
 
@@ -12,6 +12,9 @@ import Contact from './pages/help/Contact';
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 import Profile from './pages/Profile';
+
+//components
+import JobDetails from './components/JobDetails';
 import Search from './pages/search/Search';
 
 //layouts
@@ -25,22 +28,23 @@ import HelpLayout from './layouts/HelpLayout';
 //   const navigate=useNavigate()
 
 const router = createBrowserRouter(
-  
+
   createRoutesFromElements(
 
     <Route path='/' element={<RootLayout />}>
 
-      <Route index element={ <Home />} />
+      <Route index element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path='signup' element={<Signup />} />
       <Route path='about' element={<About />} />
-      <Route path='profile' element={ <Profile />} />
-      <Route path='search' element={ <Search/>} />
-      <Route Route path='help' element={<HelpLayout/>}> 
-      <Route path='faq' element={<Faq/>}/>
-      <Route path='contact' element={<Contact/>}/>
+      <Route path='profile' element={<Profile />} />
+      < Route path='search' element={<Search />} />
+      <Route path='search/jobDetails/:id' element={<JobDetails />} />
+      <Route path='help' element={<HelpLayout />}>
+        <Route path='faq' element={<Faq />} />
+        <Route path='contact' element={<Contact />} />
       </Route>
-      
+
 
 
     </Route>
@@ -51,18 +55,18 @@ const router = createBrowserRouter(
 
 function App() {
 
-  
+
 
   return (
     <>
 
-      
-        <div>
 
-          <RouterProvider router={router} />
+      <div>
 
-        </div>
-     
+        <RouterProvider router={router} />
+
+      </div>
+
 
     </>
   )
