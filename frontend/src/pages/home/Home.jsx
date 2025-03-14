@@ -8,7 +8,6 @@ import style from './Home.module.css'
 export default function Home() {
   return (
     <div >
-      <SearchBar/>
       <img 
   src="../homepage.webp" 
   alt="homepage" 
@@ -16,7 +15,7 @@ export default function Home() {
     width: "100%",         
     height: "19em",        
     objectFit: "cover",     
-    marginTop: "20px"
+    // marginTop: "20px"
   }} 
 />
     </div>

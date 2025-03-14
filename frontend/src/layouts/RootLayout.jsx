@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-
+import SearchBar from "../components/SearchBar";
 
 import style from './RootLayout.module.css'
 
@@ -16,6 +16,7 @@ const RootLayout = () => {
     <>
 
       <header>
+      <SearchBar/>
         <nav className={style.navbar}>
           <ul>
             <li className={style.title}>Wend Jobs </li>
