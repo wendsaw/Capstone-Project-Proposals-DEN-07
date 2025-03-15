@@ -42,7 +42,7 @@ const router = createBrowserRouter(
       <Route path='profile' element={<Profile />} />
       < Route path='search' element={<Search />} />
       <Route path='search/jobDetails/:id' element={<JobDetails />} />
-      <Route path='apply' element={<ApplicationForm />} />
+      <Route path="/apply/:id" element={<ApplicationForm />} />
       <Route path='help' element={<HelpLayout />}>
         <Route path='faq' element={<Faq />} />
         <Route path='contact' element={<Contact />} />

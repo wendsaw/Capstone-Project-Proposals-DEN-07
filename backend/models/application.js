@@ -28,7 +28,7 @@ const jobApplicationSchema = new Schema({
   
   resumeUrl: {
     type: String,
-    required: [true, "Resume URL is required"]
+    
   },
   jobId: {
     type: mongoose.Schema.Types.ObjectId,

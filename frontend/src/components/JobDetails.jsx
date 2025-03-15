@@ -21,28 +21,15 @@ const JobDetails = () => {
     const navigate=useNavigate()
 
     const handleClick = async (e) => {
-        e.preventDefault()
-        if (user){
-
-            
-
-
-            navigate('/apply')
-
+        e.preventDefault();
+        if (user) {
+          navigate(`/apply/${data._id}`);
+        } else {
+          alert("Sign in or create an account");
+          navigate('/login');
         }
-
-        else{
-
-            alert("sigIn or Create an account");
-
-            navigate('/login')
-
-            
-        }
-        
-    
-       
-      }
+      };
+      
 
     return (
         <>
@@ -51,17 +38,20 @@ const JobDetails = () => {
                 {isPending && <div>Loading.....</div>}
                 {error && <div style={{ color: "red" }}>{error}</div>}
                 
-                        <NavLink to={`jobApply/${id}`}>
+                        
                             {data && (
+                                
                                 <div className="job-card">
+                                
                                     <h2>{data.title}</h2>
                                     <p><strong>Description:</strong> {data.description}</p>
                                     <p><strong>Salary:</strong>${data.salary}</p>
                                     <p><strong>Location:</strong> {data.location}</p>
                                     
                                 </div>
+                                
                             )}
-                        </NavLink>
+                        
                         <button onClick={handleClick} className="apply-btn">Apply Now</button>
 
             </div>

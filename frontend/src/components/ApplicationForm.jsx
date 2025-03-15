@@ -1,24 +1,42 @@
 
 
-
+import { useParams,useNavigate } from "react-router-dom";
 
 import { useState } from 'react';
-
-
+import { useApply } from "../hooks/useApply";
 
 const ApplicationForm = () => {
+
+  const { id } = useParams()
+
+  console.log(id);
+  
+ 
+    const [fullName, setFullName]=useState('')
+    const [email, setEmail]=useState('')
+    const [phone, setPhone]=useState('')
+    const [resume, setResume]=useState('')
+    const [jobId, setJobId]=useState('')
+    
+    const{apply,error,isPending}=useApply()
+
+   
+  
+   
+   
+
   
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
+    setJobId(id)
+    apply(fullName,email,phone,resume,jobId);
+  
+
 
   }
 
-  const handleChange=()=>{
-
-
-  }
+ 
     
   return (
     <div className="application-form" style={{ maxWidth: '600px', margin: '0 auto' }}>
@@ -30,8 +48,8 @@ const ApplicationForm = () => {
           <input
             type="text"
             name="fullName"
-            
-            onChange={handleChange}
+            value={fullName}
+            onChange={(e)=> setFullName(e.target.value)}
             required
             minLength={3}
             maxLength={100}
@@ -43,8 +61,8 @@ const ApplicationForm = () => {
           <input
             type="email"
             name="email"
-            
-            onChange={handleChange}
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
             required
           />
         </label>
@@ -54,8 +72,8 @@ const ApplicationForm = () => {
           <input
             type="tel"
             name="phone"
-           
-            onChange={handleChange}
+           value={phone}
+            onChange={(e)=>setPhone(e.target.value)}
             required
            
           />
@@ -65,10 +83,10 @@ const ApplicationForm = () => {
         <label>
           Resume URL:
           <input
-            type="url"
+            type="text"
             name="resumeUrl"
-           
-            onChange={handleChange}
+           value={resume}
+            onChange={(e)=>setResume(e.target.value)}
             required
           />
         </label>
