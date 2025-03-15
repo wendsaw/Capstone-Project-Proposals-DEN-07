@@ -3,7 +3,6 @@
 import { useParams,useNavigate } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { NavLink } from "react-router-dom";
-
 import { useAuthContext } from "../hooks/useAuthContext";
 import ApplicationForm from "./ApplicationForm";
 
@@ -47,7 +46,7 @@ const JobDetails = () => {
                                     <p><strong>Description:</strong> {data.description}</p>
                                     <p><strong>Salary:</strong>${data.salary}</p>
                                     <p><strong>Location:</strong> {data.location}</p>
-                                    
+                                    <ApplicationForm data={data}/>
                                 </div>
                                 
                             )}
