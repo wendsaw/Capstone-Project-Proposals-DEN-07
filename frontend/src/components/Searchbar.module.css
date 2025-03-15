@@ -1,10 +1,18 @@
 .searchbar form {
   display: flex;
   align-items: center;
-  
-    
+  gap: 10px; /* add spacing between label and input */
+  margin-top: 40px;
+  padding: 10px;
+  background-color: azure;
+  border-radius: 8px;
+}
+.searchbar input {
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  flex: 1; /* makes it expand nicely if inside a container */
 }
 
-.searchbar input {
-  margin-left: 10px;
-}

@@ -16,20 +16,10 @@ const RootLayout = () => {
     <>
 
       <header>
-      <img src="../logo.webp" alt="logo" 
-        style={{
-          height: "5em",
-          top: "0",
-          left: "1rem",
-          zIndex: "1000"
-        }}
-      />
       
-      <SearchBar/>
         <nav className={style.navbar}>
           <ul>
           
-
             {!user && (
               <>
                 <li ><NavLink to='/' >Home</NavLink></li>
@@ -59,13 +49,17 @@ const RootLayout = () => {
 
 
             )}
+           
 
         </ul>
+        
       </nav>
     </header >
-      <main className={style.main}>
+    
+      <main >
   <Outlet />
 </main>
+<SearchBar/>
       <footer>
     Copyright &copy; Ant technology
   
