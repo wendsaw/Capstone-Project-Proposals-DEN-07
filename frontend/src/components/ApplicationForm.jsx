@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 
 
-const ApplicationForm = ({ jobId }) => {
+const ApplicationForm = () => {
   
 
   const handleSubmit = async (e) => {
@@ -22,7 +22,7 @@ const ApplicationForm = ({ jobId }) => {
     
   return (
     <div className="application-form" style={{ maxWidth: '600px', margin: '0 auto' }}>
-      <h2>Apply for this job</h2>
+      <h2 style={{textAlign:"center"}}>Applying for </h2>
 
       <form onSubmit={handleSubmit}>
         <label>

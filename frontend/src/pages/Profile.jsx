@@ -5,7 +5,7 @@ const Profile = () => {
 
     return (  
 
-<div>welcome to your profile</div>
+<div></div>
 
     );
 }

@@ -1,4 +1,6 @@
 
+import style from './Contact.module.css'
+
 
 const Contact = () => {
 
@@ -6,8 +8,9 @@ const Contact = () => {
     return ( 
 
         <>
-        <div className="contact">
-      <h3>Contact Us</h3>
+        <h3 style={{marginLeft:"650px"}}>Contact Us</h3>
+        <div className="style.form">
+      
       <form>
         <label>
           <span>Your email:</span>

@@ -1,10 +1,9 @@
 
 
-//style
 
 
 import { useState } from 'react'
-import './Searchbar.css'
+import style from './SearchBar.module.css'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -25,10 +24,11 @@ export default function SearchBar() {
 
 
   return (
-    <div className='searchbar'>
+    <div className='style.searchbar'>
      <form onSubmit={handleSubmit}>
+      
 
-        <label htmlFor="search"> Search</label>
+        <label htmlFor="search"> <p><strong>Search</strong></p></label>
         <input 
         id='search'
         type="text"

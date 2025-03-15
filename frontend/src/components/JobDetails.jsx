@@ -5,6 +5,7 @@ import { useFetch } from "../hooks/useFetch";
 import { NavLink } from "react-router-dom";
 
 import { useAuthContext } from "../hooks/useAuthContext";
+import ApplicationForm from "./ApplicationForm";
 
 
 const JobDetails = () => {
@@ -22,6 +23,8 @@ const JobDetails = () => {
     const handleClick = async (e) => {
         e.preventDefault()
         if (user){
+
+            
 
 
             navigate('/apply')
