@@ -7,7 +7,7 @@ body{
   letter-spacing: 1px;
   background: #fafafa;
 }
-h1, h2, h3, h4, ul, li, a, p, input, label, button, div, footer{
+h1, h2, h3, h4, ul, li, a, p input, label, button, div, footer{
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
@@ -44,29 +44,34 @@ nav li a{
 /* careers list */
 .careers > a {
   display: block;
-  background: rgba(0,0,0,0.2);
-  padding: 20px;
-  border-radius: 4px;
-  margin: 20px 0;
+  background: #f9fafb; 
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
   text-decoration: none;
-}
-.careers > a:hover p {
-  color: var(--primary);
-}
-.careers p {
-  margin: 0;
-}
-.careers > a p:last-child {
- font-size: 0.8em;
- color: #bbb;
+  color: #111827; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e5e7eb;
 }
 
-/* careers details */
-.career-details {
-  background: rgba(0,0,0,0.2);
-  padding: 20px;
-  border-radius: 4px;
-  margin: 20px 0;
+.careers > a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+}
+
+.careers > a h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.careers > a p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4b5563;
 }
 
 

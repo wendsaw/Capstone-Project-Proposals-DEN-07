@@ -16,10 +16,20 @@ const RootLayout = () => {
     <>
 
       <header>
+     
+      <img src="../logo.webp" alt="logo" 
+  style={{
+    height: "5em",
+    position: "absolute",
+    top: "0",
+    left: "1rem",
+    zIndex: "1000"
+  }}
+/>
       <SearchBar/>
         <nav className={style.navbar}>
           <ul>
-            <li className={style.title}>Wend Jobs </li>
+          
 
             {!user && (
               <>
