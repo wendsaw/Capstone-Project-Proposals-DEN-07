@@ -1,10 +1,11 @@
 
 
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { NavLink } from "react-router-dom";
 
 import { useAuthContext } from "../hooks/useAuthContext";
+
 
 const JobDetails = () => {
 
@@ -16,18 +17,23 @@ const JobDetails = () => {
 
     const { user } = useAuthContext()
 
+    const navigate=useNavigate()
+
     const handleClick = async (e) => {
         e.preventDefault()
         if (user){
 
 
-            console.log('i am ready to apply');
+            navigate('/apply')
 
         }
 
         else{
 
-            console.log('please sign in first');
+            alert("sigIn or Create an account");
+
+            navigate('/login')
+
             
         }
         

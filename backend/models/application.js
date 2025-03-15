@@ -25,12 +25,7 @@ const jobApplicationSchema = new Schema({
     trim: true,
     match: [/^\+?[0-9]{7,15}$/, "Please enter a valid phone number"]
   },
-  coverLetter: {
-    type: String,
-    required: [true, "Cover letter is required"],
-    minLength: [50, "Cover letter should be at least 50 characters"],
-    maxLength: [2000, "Cover letter should not exceed 2000 characters"]
-  },
+  
   resumeUrl: {
     type: String,
     required: [true, "Resume URL is required"]

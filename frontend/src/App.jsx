@@ -16,10 +16,12 @@ import Profile from './pages/Profile';
 //components
 import JobDetails from './components/JobDetails';
 import Search from './pages/search/Search';
+import ApplicationForm from './components/ApplicationForm';
 
 //layouts
 import RootLayout from './layouts/RootLayout';
 import HelpLayout from './layouts/HelpLayout';
+
 
 
 
@@ -40,6 +42,7 @@ const router = createBrowserRouter(
       <Route path='profile' element={<Profile />} />
       < Route path='search' element={<Search />} />
       <Route path='search/jobDetails/:id' element={<JobDetails />} />
+      <Route path='apply' element={<ApplicationForm />} />
       <Route path='help' element={<HelpLayout />}>
         <Route path='faq' element={<Faq />} />
         <Route path='contact' element={<Contact />} />

@@ -7,7 +7,7 @@ const JobsListing = ({ data }) => {
 
   if (data.length === 0) {
 
-    return <div>sorry your dream jpb is not here!</div>
+    return <div>sorry your dream job is not here!</div>
   }
 
   return (
