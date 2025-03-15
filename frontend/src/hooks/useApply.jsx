@@ -24,7 +24,7 @@ export const useApply = (fullName,email,phone,resume,jobId) => {
     if (response.ok) {
      
       // update the auth context
-      navigate('/profile')
+      navigate(`confirmation`);
 
       // update loading state
       setIsPending(false)

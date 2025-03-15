@@ -22,7 +22,6 @@ const ApplicationForm = () => {
     const [email, setEmail]=useState('')
     const [phone, setPhone]=useState('')
     const [resume, setResume]=useState('')
-    const [jobId, setJobId]=useState('')
     const{apply,error,isPending}=useApply()
 
     
@@ -30,14 +29,12 @@ const ApplicationForm = () => {
    
   
    
-   
 
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setJobId(id)
-    apply(fullName,email,phone,resume,jobId);
+    apply(fullName,email,phone,resume,id);
 
     console.log('application submit');
     

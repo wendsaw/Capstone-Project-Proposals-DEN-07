@@ -46,7 +46,7 @@ const JobDetails = () => {
                                     <p><strong>Description:</strong> {data.description}</p>
                                     <p><strong>Salary:</strong>${data.salary}</p>
                                     <p><strong>Location:</strong> {data.location}</p>
-                                    <ApplicationForm data={data}/>
+                                    
                                 </div>
                                 
                             )}
