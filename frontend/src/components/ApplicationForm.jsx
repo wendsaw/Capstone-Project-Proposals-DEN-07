@@ -9,11 +9,9 @@ const ApplicationForm = () => {
 
   const { id } = useParams()
   
-  
       const url = `http://localhost:3000/listing/${id}`
   
       const { data } = useFetch(url);
-  
 
   console.log(id);
   
@@ -24,21 +22,16 @@ const ApplicationForm = () => {
     const [resume, setResume]=useState('')
     const{apply,error,isPending}=useApply()
 
-    
-
-   
-  
-   
-
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     apply(fullName,email,phone,resume,id);
-
     console.log('application submit');
     
-  
+  setFullName('')
+  setEmail('')
+  setPhone('')
+  setResume('')
 
 
   }

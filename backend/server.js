@@ -7,6 +7,7 @@ const cors = require('cors');
 const listingsRoutes = require('./routes/listingsRoutes');
 const authRoutes = require('./routes/authRoutes');
 const applyRoutes = require('./routes/applyRoutes');
+const contactRoutes=require('./routes/contactRoutes')
 
 
 dotenv.config();
@@ -26,6 +27,7 @@ app.use(express.json());
 app.use(listingsRoutes);
 app.use(authRoutes);
 app.use(applyRoutes);
+app.use(contactRoutes);
 
 // DB Connection
 mongoose.connect(process.env.MONGO_URL)

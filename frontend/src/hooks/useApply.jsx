@@ -23,7 +23,6 @@ export const useApply = (fullName,email,phone,resume,jobId) => {
     }
     if (response.ok) {
      
-      // update the auth context
       navigate(`confirmation`);
 
       // update loading state
