@@ -22,7 +22,6 @@ const ApplicationForm = () => {
     const [resume, setResume]=useState('')
     const{apply,error,isPending}=useApply()
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     apply(fullName,email,phone,resume,id);

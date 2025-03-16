@@ -1,15 +1,18 @@
 import { NavLink, Outlet } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-
 import style from './RootLayout.module.css'
-
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useTheme } from "../hooks/useTheme";
+import ThemeSelector from "../components/ThemeSelector";
 
 const RootLayout = () => {
 
   const { logout } = useLogout()
   const { user } = useAuthContext()
+
+  const {color, changeColor}=useTheme()
+  
 
   return (
 
@@ -17,7 +20,8 @@ const RootLayout = () => {
 
       <header>
       
-        <nav className={style.navbar}>
+        <nav  className={style.navbar} style={{background:color}}>
+          
           <ul>
           
             {!user && (
@@ -52,14 +56,21 @@ const RootLayout = () => {
            
 
         </ul>
-        
+       
       </nav>
+      <ThemeSelector/>
     </header >
     
       <main >
   <Outlet />
 </main>
+
+<span style={{marginLeft:"650px"}} >
+  Wend Job
+</span>
+
 <SearchBar/>
+
       <footer>
     Copyright &copy; Ant technology
   
