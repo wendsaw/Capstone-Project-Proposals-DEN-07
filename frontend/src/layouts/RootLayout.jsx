@@ -6,10 +6,15 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useTheme } from "../hooks/useTheme";
 import ThemeSelector from "../components/ThemeSelector";
 
+import { useLocation } from "react-router-dom";
+
+const NotGranted=['/apply/:id']
+
 const RootLayout = () => {
 
   const { logout } = useLogout()
   const { user } = useAuthContext()
+  const location = useLocation()
 
   const { color, } = useTheme()
 
@@ -21,8 +26,6 @@ const RootLayout = () => {
       <header>
 
         <nav className={style.navbar} style={{ background: color }}>
-
-         
 
             {!user && (
               <>
@@ -40,18 +43,13 @@ const RootLayout = () => {
 
                 <ul><NavLink to='profile' >Profile</NavLink></ul>
                 <ul><NavLink to='help' >Help</NavLink></ul>
-
                 <ul style={{marginLeft:"150px"}}>{user.email}...good luck!</ul>
-
-
                 <button style={{ marginLeft: "500px", marginBottom: "25px" }} onClick={logout}>Logout</button>
               </>
 
 
             )}
 
-
-         
 
         </nav>
         <ThemeSelector />
@@ -61,7 +59,14 @@ const RootLayout = () => {
         <Outlet />
       </main>
 
-      <SearchBar />
+      {!(
+  location.pathname.startsWith('/apply') ||
+  location.pathname.startsWith('/login') ||
+  location.pathname.startsWith('/signup')
+) && <SearchBar />}
+
+
+
 
       <footer>
         Copyright &copy; Ant technology
