@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
  import { useLogin } from '../../hooks/useLogin';
 
 //styles
-import style from './Login.module.css';
+import './Login.css';
 
 export default function Login() {
 
@@ -24,7 +24,7 @@ const [password, setPassword]=useState('')
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className={style['signup-form']}>
+      <form onSubmit={handleSubmit} className='login-form'>
         <h2>Login</h2>
 
         <label>

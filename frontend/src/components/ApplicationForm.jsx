@@ -27,10 +27,7 @@ const ApplicationForm = () => {
     apply(fullName,email,phone,resume,id);
     console.log('application submit');
     
-  setFullName('')
-  setEmail('')
-  setPhone('')
-  setResume('')
+  
 
 
   }

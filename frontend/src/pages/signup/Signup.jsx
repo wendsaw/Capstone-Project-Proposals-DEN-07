@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useSignup } from '../../hooks/useSignup'
 
-import style from './Signup.module.css'
+import  './Signup.css'
  import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function Signup() {
@@ -34,7 +34,7 @@ const handleSubmit = async (e) => {
   
   return (
     <div>
-      <form onSubmit={handleSubmit} className={style['signup-form']}>
+      <form onSubmit={handleSubmit} className='signup'>
         <h2>Sign Up</h2>
         
 

@@ -11,25 +11,25 @@ const RootLayout = () => {
   const { logout } = useLogout()
   const { user } = useAuthContext()
 
-  const {color, }=useTheme()
-  
+  const { color, } = useTheme()
+
 
   return (
 
     <>
 
       <header>
-      
-        <nav  className={style.navbar} style={{background:color, height:"1.5em"}}>
-          
-          <ul>
-          
+
+        <nav className={style.navbar} style={{ background: color }}>
+
+         
+
             {!user && (
               <>
-                <li ><NavLink to='/' >Home</NavLink></li>
-                <li><NavLink to='login' >Login</NavLink></li>
-                <li><NavLink to='signup' >Signup</NavLink></li>
-                <li><NavLink to='about' >About</NavLink></li>
+                <ul ><NavLink to='/' >Home</NavLink></ul>
+                <ul><NavLink to='login' >Login</NavLink></ul>
+                <ul><NavLink to='signup' >Signup</NavLink></ul>
+                <ul><NavLink to='about' >About</NavLink></ul>
               </>
             )}
 
@@ -38,44 +38,36 @@ const RootLayout = () => {
 
               <>
 
-                <li><NavLink to='profile' >Profile</NavLink></li>
-                <li><NavLink to='help' >Help</NavLink></li>
+                <ul><NavLink to='profile' >Profile</NavLink></ul>
+                <ul><NavLink to='help' >Help</NavLink></ul>
 
-                <ul>
-                  <li >welcome {user.email}...good luck!</li>
-                  <button style={{marginLeft:"500px", marginBottom:"25px"}}onClick={logout}>Logout</button>
-                  
-                  
-                </ul>
-                
-              
-          </>
+                <ul style={{marginLeft:"150px"}}>{user.email}...good luck!</ul>
+
+
+                <button style={{ marginLeft: "500px", marginBottom: "25px" }} onClick={logout}>Logout</button>
+              </>
 
 
             )}
-           
 
-        </ul>
-       
-      </nav>
-      <ThemeSelector/>
-    </header >
-    
+
+         
+
+        </nav>
+        <ThemeSelector />
+      </header >
+
       <main >
-  <Outlet />
-</main>
+        <Outlet />
+      </main>
 
-<span style={{marginLeft:"650px"}} >
-  Wend Job
-</span>
-
-<SearchBar/>
+      <SearchBar />
 
       <footer>
-    Copyright &copy; Ant technology
-  
+        Copyright &copy; Ant technology
+
       </footer>
-      
+
 
 
 

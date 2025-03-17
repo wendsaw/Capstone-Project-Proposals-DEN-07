@@ -1,7 +1,8 @@
-.navbar {
-  background: #58249c;
+.navbar  {
+  background: #07a00a;
   padding: 20px;
   color: #fff;
+  text-decoration: none;
 }
 .navbar nav {
   display: flex;
@@ -9,7 +10,7 @@
   max-width: 1200px;
   margin: 0 auto;
 }
-.navbar a.brand {
+.navbar  {
   margin-right: auto;
   color: #fff;
   text-decoration: none;

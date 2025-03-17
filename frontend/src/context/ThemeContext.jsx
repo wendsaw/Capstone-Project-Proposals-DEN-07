@@ -25,7 +25,7 @@ export function ThemeProvider({children}){
 
     const [state,dispatch ]=useReducer(themeReducer, {
 
-        color:"#58249c"
+        color:"#249c6b"
 
     })
 
