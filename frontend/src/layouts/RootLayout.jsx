@@ -61,7 +61,9 @@ const RootLayout = () => {
       {!(
   location.pathname.startsWith('/apply') ||
   location.pathname.startsWith('/login') ||
-  location.pathname.startsWith('/signup')
+  location.pathname.startsWith('/signup')||
+  location.pathname.startsWith('/signup')||
+  location.pathname.startsWith('/help/contact')
 ) && <SearchBar />}
 
 
