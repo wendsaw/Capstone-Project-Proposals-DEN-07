@@ -25,7 +25,7 @@ const JobDetails = () => {
           navigate(`/apply/${data._id}`);
         } else {
           alert("Sign in or create an account");
-          navigate('/login');
+          navigate('/signup');
         }
       };
       

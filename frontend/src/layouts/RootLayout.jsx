@@ -26,28 +26,29 @@ const RootLayout = () => {
 
         <nav className={style.navbar} style={{ background: color }}>
 
-            {!user && (
-              <>
-                <ul ><NavLink to='/' >Home</NavLink></ul>
-                <ul><NavLink to='login' >Login</NavLink></ul>
-                <ul><NavLink to='signup' >Signup</NavLink></ul>
-                <ul><NavLink to='about' >About</NavLink></ul>
-              </>
-            )}
+          {!user && (
+            <>
+              <ul ><NavLink to='/' >Home</NavLink></ul>
+              <ul><NavLink to='login' >Login</NavLink></ul>
+              <ul><NavLink to='signup' >Signup</NavLink></ul>
+              <ul><NavLink to='about' >About</NavLink></ul>
+            </>
+          )}
 
 
-            {user && (
+          {user && (
 
-              <>
+            <>
+              <ul ><NavLink to='/' >Home</NavLink></ul>
+              <ul><NavLink to='profile' >Profile</NavLink></ul>
+              <ul><NavLink to='help' >Help</NavLink></ul>
+              <ul style={{ marginLeft: "150px" }}>{user.email}...good luck!</ul>
+              <button style={{ marginLeft: "500px", marginBottom: "25px" }} onClick={logout}>Logout</button>
+              
+            </>
 
-                <ul><NavLink to='profile' >Profile</NavLink></ul>
-                <ul><NavLink to='help' >Help</NavLink></ul>
-                <ul style={{marginLeft:"150px"}}>{user.email}...good luck!</ul>
-                <button style={{ marginLeft: "500px", marginBottom: "25px" }} onClick={logout}>Logout</button>
-              </>
 
-
-            )}
+          )}
 
 
         </nav>
@@ -59,12 +60,12 @@ const RootLayout = () => {
       </main>
 
       {!(
-  location.pathname.startsWith('/apply') ||
-  location.pathname.startsWith('/login') ||
-  location.pathname.startsWith('/signup')||
-  location.pathname.startsWith('/signup')||
-  location.pathname.startsWith('/help/contact')
-) && <SearchBar />}
+        location.pathname.startsWith('/apply') ||
+        location.pathname.startsWith('/login') ||
+        location.pathname.startsWith('/signup') ||
+        location.pathname.startsWith('/signup') ||
+        location.pathname.startsWith('/help/contact')
+      ) && <SearchBar />}
 
 
 
