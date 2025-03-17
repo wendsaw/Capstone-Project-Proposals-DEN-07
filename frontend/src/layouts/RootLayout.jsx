@@ -11,7 +11,7 @@ const RootLayout = () => {
   const { logout } = useLogout()
   const { user } = useAuthContext()
 
-  const {color, changeColor}=useTheme()
+  const {color, }=useTheme()
   
 
   return (
@@ -20,7 +20,7 @@ const RootLayout = () => {
 
       <header>
       
-        <nav  className={style.navbar} style={{background:color}}>
+        <nav  className={style.navbar} style={{background:color, height:"1.5em"}}>
           
           <ul>
           

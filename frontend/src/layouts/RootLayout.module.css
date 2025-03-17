@@ -1,5 +1,5 @@
 .navbar {
-  background-color:burlywood;
+  background: #58249c;
   padding: 20px;
   color: #fff;
 }
@@ -25,11 +25,4 @@
 .navbar a:last-child:hover {
   background: #fff;
   color: #333;
-}
-
-.logo{
-  
-
-  margin-left: 650px;
-  
 }
