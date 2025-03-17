@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-import style from './RootLayout.module.css'
+import  './RootLayout.css'
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useTheme } from "../hooks/useTheme";
@@ -24,7 +24,7 @@ const RootLayout = () => {
 
       <header>
 
-        <nav className={style.navbar} style={{ background: color }}>
+        <nav className="navbar" style={{ background: color }}>
 
           {!user && (
             <>
@@ -42,7 +42,7 @@ const RootLayout = () => {
               <ul ><NavLink to='/' >Home</NavLink></ul>
               <ul><NavLink to='profile' >Profile</NavLink></ul>
               <ul><NavLink to='help' >Help</NavLink></ul>
-              <ul style={{ marginLeft: "150px" }}>{user.email}...good luck!</ul>
+              <ul style={{ marginLeft: "100px" }}>{user.email}...good luck!</ul>
               <button style={{ marginLeft: "500px", marginBottom: "25px" }} onClick={logout}>Logout</button>
               
             </>

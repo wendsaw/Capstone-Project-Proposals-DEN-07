@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 
-import style from './RootLayout.module.css'
+import  './HelpLayout.css'
 
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -22,7 +22,7 @@ const HelpLayout = () => {
             A</p>
 
             <header>
-                <nav className={style.navbar}>
+                <nav className="navbarHelp">
                     <ul>
 
 
