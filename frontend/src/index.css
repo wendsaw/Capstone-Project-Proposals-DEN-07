@@ -74,6 +74,20 @@ nav li a{
   color: #4b5563;
 }
 
+.about{
+
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.8;
+   
+    
+  }
+  
+  .about{
+    background-color: #f0f4ff;
+  }
+  
+
+
 
 footer{
   text-align: center;

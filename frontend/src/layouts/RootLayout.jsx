@@ -8,7 +8,6 @@ import ThemeSelector from "../components/ThemeSelector";
 
 import { useLocation } from "react-router-dom";
 
-const NotGranted=['/apply/:id']
 
 const RootLayout = () => {
 
