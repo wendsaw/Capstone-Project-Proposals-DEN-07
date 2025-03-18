@@ -41,7 +41,7 @@ const router = createBrowserRouter(
       <Route path='signup' element={<Signup />} />
       <Route path='about' element={<About />} />
       <Route path='profile' element={<Profile />} />
-      <Route path="/apply/:id/confirmation" element={<Confirmation />} />
+      <Route path="/apply/id/confirmation" element={<Confirmation />} />
       < Route path='search' element={<Search />} />
       <Route path='search/jobDetails/:id' element={<JobDetails />} />
       <Route path="/apply/:id" element={<ApplicationForm />} />

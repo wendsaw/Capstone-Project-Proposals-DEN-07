@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 
 const Confirmation = () => {
 
-const {params}=useParams()
+  const { id } = useParams()
 
-console.log(params);
+     console.log(id);
 
     return (
       <div style={{ border:"solid" , width:"50%", height:"50%",padding: '5rem', marginLeft:"300px", textAlign:"center" }}>
