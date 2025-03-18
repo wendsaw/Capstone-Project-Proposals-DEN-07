@@ -13,7 +13,7 @@ const Search = () => {
     console.log(query);
     
 
-    const url = `http://localhost:3000/listings/${query}`;
+    const url = `https://backendcapstone-vdzh.onrender.com/listings/${query}`;
 
     const {error, isPending, data}=useFetch(url)
 

@@ -6,7 +6,7 @@ const Contact = () => {
   const [message, setMessage] = useState('');
   const contact = async (email, message) => {
     try {
-      const response = await fetch("http://localhost:3000/contact", {
+      const response = await fetch("https://backendcapstone-vdzh.onrender.com/contact", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, message })

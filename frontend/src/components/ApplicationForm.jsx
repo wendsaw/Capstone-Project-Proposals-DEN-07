@@ -8,7 +8,9 @@ import { useApply } from "../hooks/useApply";
 const ApplicationForm = () => {
 
   const { id } = useParams()
-  const url = `http://localhost:3000/listing/${id}`
+  // https://backendcapstone-vdzh.onrender.com/
+  // http://localhost:3000/
+  const url = `https://backendcapstone-vdzh.onrender.com/listing/${id}`
   const { data } = useFetch(url);
 
   console.log(id);

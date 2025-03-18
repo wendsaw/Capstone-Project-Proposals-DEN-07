@@ -10,7 +10,7 @@ export const useApply = () => {
   const apply = async (fullName,email,phone,resume,jobId) => {
     setIsPending(true)
     setError(null)
-    const response = await fetch("http://localhost:3000/apply", {
+    const response = await fetch("https://backendcapstone-vdzh.onrender.com/apply", {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({fullName,email,phone,resume,jobId})

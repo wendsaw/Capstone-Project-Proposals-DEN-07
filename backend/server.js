@@ -13,13 +13,10 @@ const contactRoutes=require('./routes/contactRoutes')
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors({
-  origin: 'http://localhost:5173', 
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 
 // Routes
