@@ -1,7 +1,7 @@
 
 
 import { useState } from 'react'
-import './SearchBar.css'
+import './Searchbar.css'
 import { useNavigate } from 'react-router-dom'
 
 import { useTheme } from '../hooks/useTheme'
