@@ -10,7 +10,7 @@ export default function SearchBar() {
 
     const [search, setSearch]=useState('')
     const navigate=useNavigate()
-    const {color, }=useTheme()
+    const {color}=useTheme()
 
     const handleSubmit=(e)=>{
 

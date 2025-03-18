@@ -26,7 +26,7 @@ const ApplicationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     apply(fullName, email, phone, resume, id);
-    console.log('application submit');
+    
 
   }
 
