@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const useApply = (fullName,email,phone,resume,jobId) => {
+export const useApply = () => {
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(null)
   const navigate=useNavigate()
@@ -23,7 +23,7 @@ export const useApply = (fullName,email,phone,resume,jobId) => {
     }
     if (response.ok) {
      
-      navigate(`confirmation`);
+      navigate(`/apply/id/confirmation`);
 
       // update loading state
       setIsPending(false)
