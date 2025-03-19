@@ -1,10 +1,5 @@
 
-
-
-
 const JobApplication=require('../models/application')
-
-
 
 module.exports.apply_user= async (req,res)=>{
 
@@ -21,6 +16,8 @@ module.exports.apply_user= async (req,res)=>{
         res.status(400).json(err)
     }
 }
+
+
 
 module.exports.apply_all= async (req,res)=>{
 

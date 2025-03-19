@@ -2,7 +2,6 @@
 
 const Listing=require('../models/listing')
 
-
 module.exports.homepage_get=(req,res)=>{
 
     res.send('homepage')
@@ -23,8 +22,6 @@ module.exports.listing_getAll= async(req,res)=>{
         res.status(400).json(err)
     }
 }
-
-
 
 
 module.exports.listing_getById= async (req,res)=>{
@@ -58,7 +55,7 @@ module.exports.listing_put= async (req,res)=>{
     try {
        
         console.log(req.body)
-        const response = await Listing.findByIdAndUpdate(req.params.id, req.body) // can add { new: true } as third argument
+        const response = await Listing.findByIdAndUpdate(req.params.id, req.body) 
         
         res.status(200).json(response)
     } catch(err) {

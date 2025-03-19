@@ -1,12 +1,7 @@
 
 
 
-
-
-
 const Contact=require('../models/contact')
-
-
 
 module.exports.contact_user= async (req,res)=>{
 
