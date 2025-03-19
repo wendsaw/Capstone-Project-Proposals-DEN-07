@@ -1,33 +1,52 @@
 import { useState } from 'react';
 import style from './Contact.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isPending, setIsPending] = useState(null)
+  const [error, setError] = useState(null)
+
+  const navigate = useNavigate()
   const contact = async (email, message) => {
     try {
+      setIsPending(true)
+      setError(null)
       const response = await fetch("https://backendcapstone-vdzh.onrender.com/contact", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, message })
       });
 
+      const result = await response.json();
+      console.log(result);
+      
       if (!response.ok) {
         throw new Error('Failed to send message');
+        
       }
-
-      const result = await response.json();
-      console.log( result);
+      if (response.ok) {
+     
+        // update loading state
+        setIsPending(false)
+      }
 
     } catch (error) {
       console.log('Error submitting contact form:', error.message);
+
+      setIsPending(false)
+      setError(error.message)
     }
   };
 
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     await contact(email, message);
-    alert('Thank you for your message!');
+   
+    navigate('/profile')
     setEmail('');
     setMessage('');
   };
@@ -56,7 +75,10 @@ const Contact = () => {
               onChange={(e) => setMessage(e.target.value)}
             />
           </label>
-          <button type="submit">Submit</button>
+          {isPending && <div>Sending......</div>}
+          <button type="submit" disabled={isPending}>Submit</button>
+          {error && <div>{error}</div>}
+
         </form>
       </div>
     </>
