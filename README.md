@@ -1,37 +1,45 @@
 Capstone Project Proposal – DEN-07
 Live Demo: https://wend-jobs.onrender.com
 
-Project Title: Job Search Application – Wend Jobs
-This job search app is designed to provide users with cutting-edge tools to help them find their dream job efficiently and seamlessly.
+Project Title:
+Job Search Application – Wend Jobs
+
+Project Description:
+Wend Jobs is a modern job search application designed to provide users with innovative tools to find their dream jobs efficiently and seamlessly. The platform focuses on delivering a user-friendly interface, secure user authentication, and direct job application functionality.
 
 Technical Specifications
-The application is built using the MERN stack:
+The application is developed using the MERN stack, which ensures a robust, scalable, and responsive user experience:
 
 Frontend: React.js
 Backend: Node.js and Express.js
 Database: MongoDB
-This modern tech stack enables a fast, responsive, and scalable job search experience for users.
+This tech stack offers a seamless integration between the client interface and server operations.
 
 Architecture Overview
-The project is divided into two main components:
+The application is structured into two main components:
 
-Frontend
-Backend
+Frontend (Client-side)
+Backend (Server-side)
 Frontend Overview
-The frontend allows users to interact with all aspects of the application. It includes a combination of public and private pages:
+The frontend allows users to interact with all features of the platform through a combination of public and private pages.
 
-Public Pages:
-Home Page: Introduction to the platform.
-Login Page: For user authentication.
-SignUp Page: For new user registration.
-About Page: Information about the platform’s mission and purpose.
-All visitors have access to the public pages.
+Public Pages (Accessible to all visitors):
+Home Page: Introduction to the platform and its features.
+Login Page: User authentication interface.
+Sign Up Page: New user registration.
+About Page: Overview of the platform’s mission and goals.
+Private Pages (Accessible to authenticated users only):
+Profile Page: Manage user profile details and preferences.
+Help Section:
+FAQ Page: Answers to commonly asked questions.
+Contact Page: A form for users to reach customer support.
+Application Page: Allows authenticated users to submit job applications directly into the database.
+Backend Overview
+The backend handles all data processing and server-side logic, providing full control to developers for managing database operations.
 
-Private Pages:
-Accessible only to authenticated users:
+There are four major API routes, each managed by its respective controller:
 
-Profile Page: View and manage user profile information.
-Help Section: Includes two nested pages:
-FAQ Page: Common questions and answers.
-Contact Page: A form to reach support.
-Application Page: Allows registered users to submit job applications directly to the database.
+Authentication Routes: Handles user login, registration, and secure access control.
+Application Routes: Manages job application form submissions.
+Contact Routes: Processes inquiries submitted through the contact form.
+Job Listings Routes: Provides access to available job postings stored in the database.
