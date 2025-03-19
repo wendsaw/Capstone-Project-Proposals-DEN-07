@@ -1,14 +1,11 @@
 
 
-
 import { useState } from 'react'
-
-import { useNavigate } from 'react-router-dom'
-
+import { useTheme } from '../../hooks/useTheme'
 import { useSignup } from '../../hooks/useSignup'
-
 import  './Signup.css'
- import { useAuthContext } from '../../hooks/useAuthContext'
+
+
 
 export default function Signup() {
 
@@ -17,7 +14,8 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   
   const {signup, error, isPending}=useSignup()
-  const { user } = useAuthContext()
+  
+  const {color}=useTheme()
   
 
 
@@ -57,7 +55,7 @@ const handleSubmit = async (e) => {
           />
         </label>
        
-     <button className='btn' disabled={isPending}>Signup</button >
+     <button className='btn' disabled={isPending} style={{background:color}}>Signup</button >
          {error && <div style={{color:"red"}}>{error}</div>}
     
        {isPending && <div> signing....up </div>}

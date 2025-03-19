@@ -9,7 +9,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const JobDetails = () => {
 
     const { id } = useParams()
-    const url = `https://backendcapstone-vdzh.onrender.com/listing/${id}`
+    const url = import.meta.env.VITE_API_URL+`/listing/${id}`
     const { data, error, isPending } = useFetch(url);
     const { user } = useAuthContext()
     const navigate = useNavigate()

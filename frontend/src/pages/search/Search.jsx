@@ -13,7 +13,7 @@ const Search = () => {
     console.log(query);
     
 
-    const url = `https://backendcapstone-vdzh.onrender.com/listings/${query}`;
+    const url = import.meta.env.VITE_API_URL+`/listings/${query}`;
 
     const {error, isPending, data}=useFetch(url)
 

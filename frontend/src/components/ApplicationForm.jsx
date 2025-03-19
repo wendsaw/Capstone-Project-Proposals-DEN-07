@@ -10,7 +10,8 @@ const ApplicationForm = () => {
   const { id } = useParams()
   // https://backendcapstone-vdzh.onrender.com/
   // http://localhost:3000/
-  const url = `https://backendcapstone-vdzh.onrender.com/listing/${id}`
+  // import.meta.env.VITE_API_URL
+  const url = import.meta.env.VITE_API_URL+`/listing/${id}`
   const { data } = useFetch(url);
 
   console.log(id);

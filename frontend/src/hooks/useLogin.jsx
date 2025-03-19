@@ -13,7 +13,7 @@ export const useLogin = ( email, password) => {
     setIsPending(true)
     setError(null)
 
-    const response = await fetch("https://backendcapstone-vdzh.onrender.com/login", {
+    const response = await fetch(import.meta.env.VITE_API_URL+"/login", {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({email, password })

@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import style from './Contact.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../hooks/useTheme'
 
 const Contact = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isPending, setIsPending] = useState(null)
   const [error, setError] = useState(null)
+  const {color}=useTheme()
 
   const navigate = useNavigate()
   const contact = async (email, message) => {
     try {
       setIsPending(true)
       setError(null)
-      const response = await fetch("https://backendcapstone-vdzh.onrender.com/contact", {
+      const response = await fetch(import.meta.env.VITE_API_URL+"/contact", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, message })
@@ -76,7 +78,7 @@ const Contact = () => {
             />
           </label>
           {isPending && <div>Sending......</div>}
-          <button type="submit" disabled={isPending}>Submit</button>
+          <button type="submit" disabled={isPending}style={{background:color}}>Submit</button>
           {error && <div>{error}</div>}
 
         </form>

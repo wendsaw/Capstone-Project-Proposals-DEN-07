@@ -10,7 +10,7 @@ export const useApply = () => {
   const apply = async (fullName,email,phone,resume,jobId) => {
     setIsPending(true)
     setError(null)
-    const response = await fetch("https://backendcapstone-vdzh.onrender.com/apply", {
+    const response = await fetch(import.meta.env.VITE_API_URL+"/apply", {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({fullName,email,phone,resume,jobId})

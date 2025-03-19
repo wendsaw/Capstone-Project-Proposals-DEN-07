@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../hooks/useTheme'
 import { useLogin } from '../../hooks/useLogin';
 
 //styles
@@ -10,16 +9,13 @@ export default function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+const {color}=useTheme()
   const { login, error, isPending } = useLogin()
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     await login(email, password)
-
-
   }
 
   return (
@@ -48,7 +44,7 @@ export default function Login() {
           />
         </label>
         {isPending && <div>request pending.....wait</div>}
-        <button className='btn' disabled={isPending} >signIn</button >
+        <button className='btn' disabled={isPending} style={{background:color}}>signIn</button >
         {error && <div style={{ color: "red" }}>{error}</div>}
 
 
